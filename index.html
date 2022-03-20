@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30PhoneStore</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/javascript/styles.js">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        
+    </div> 
+    <div id="container__customer" >
+        <div class="c__content-menu">
+            <div class="c__nav">
+                <ul class="c__navbar">
+                    <li class="c__navbar-item"><a onclick="openHome()" href="#" class="nav-item"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+                    <li class="c__navbar-item"><a onclick="openHistory()" href="#" class="nav-item"> <i class="fa-solid fa-clock-rotate-left"></i> Lịch sử mua hàng</a></li>
+                    <li class="c__navbar-item"><a href="#" class="nav-item"> <i class="fa-solid fa-gift"></i> Ưu đãi của bạn</a></li>
+                    <li class="c__navbar-item"><a href="#" class="nav-item"><i class="fa-solid fa-award"></i> Hạng thành viên</a></li>
+                    <li class="c__navbar-item"><a onclick="openCustomer()" class="nav-item"><i class="fa-solid fa-user"></i> Tài khoản của bạn</a></li>
+                    <li class="c__navbar-item"><a onclick="openSupport()" href="#" class="nav-item"><i class="fa-solid fa-headset"></i> Hỗ trợ </a></li>
+                    <li class="c__navbar-item"><a href="#" class="nav-item"><i class="fa-solid fa-comment"></i> Góp ý - Phản hồi</a></li>
+                    <li class="c__navbar-item"><a href="#" class="nav-item"><i class="fa-solid fa-right-from-bracket"></i> Thoát tài khoản</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="c__content-home">
+
+        </div>
+        <div class="c__content-history">
+            <div class="history-title">
+                Quản lý đơn hàng
+            </div>
+            <div class="history-find">
+                <input type="text" placeholder="Tìm kiếm">
+            </div>
+            <div class="history-content">
+                <table id="history-table">
+                    <thead>
+                        <td>Mã vận chuyển</td>
+                        <td>Tình trạng</td>
+                        <td>Ngày đặt</td>
+                        <td>Tổng tiền</td>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="c__content-support">
+            <ul class="support-list">
+                <div class="support-title">
+                    Hồ trợ khách hàng 
+                </div>
+                <li class="support-item">
+                    <div class="support-item__icon">
+                        <img src="https://cellphones.com.vn/smember/_nuxt/img/headphones1.aa8d3ef.png" alt="">
+                    </div>
+                    <div class="support-item__text">
+                        <p>Tư vấn mua hàng (8h00 - 20h00)</p>
+                        <p>Miền Bắc:  <a href=""> 18002097</a> </p>
+                        <p>Miền Nam: <a href=""> 18002044</a></p>
+                    </div>
+                </li>
+                <li class="support-item">
+                    <div class="support-item__icon">
+                        <img src="https://cellphones.com.vn/smember/_nuxt/img/waranty1.0738a44.png" alt="">
+                    </div>
+                </li>
+                <li class="support-item">
+                    <div class="support-item__icon">
+                        <img src="https://cellphones.com.vn/smember/_nuxt/img/bad-review1.c5f81ab.png" alt="">
+                    </div>
+                </li>
+                <li class="support-item">
+                    <div class="support-item__icon">
+                        <img src="https://cellphones.com.vn/smember/_nuxt/img/message1.62a328e.png" alt="">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="c__content-infor">
+            <div class="c__infor-top">
+                <figure class="c__avt">
+                    <img src="./assets/image/avt.jpg" alt="avatar"> 
+                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                    <!-- <img src="https://image.cellphones.com.vn/358x/media/catalog/product/_/0/_0005_layer_6.jpg" alt=""> -->
+                </figure>
+                <div class="c__name">
+                   Nguyễn Hoàng Gia Đại
+                </div>
+                <button class="c__edit" onclick="openEdit()">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </button> 
+                <button class="c__edit-close" onclick="closeEdit()"><i class="fa-solid fa-floppy-disk"></i></button>
+            </div>
+            <div class="c__infor-bottom">
+                <ul class="c__list">
+                    <li class="c__item">
+                        <p>Sinh nhật  <button class="c__item-edit-birthday"><i class="fa-solid fa-pen-to-square "></i></button></p>
+                        <i class="fa-solid fa-cake-candles"></i>
+                        <p></p>
+                    </li>
+                    <li class="c__item">
+                        <p>Số điện thoại <button class="c__item-edit-phone"><i class="fa-solid fa-pen-to-square "></i></button></p>
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </li>
+                    <li class="c__item">
+                        <p>Ngày tham gia </p>
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <p></p>
+                    </li>
+                    <li class="c__item">
+                        <p>Hạng thành viên</p>
+                        <i class="fa-solid fa-medal"></i>
+                        <p></p>
+                    </li>
+                    <li class="c__item">
+                        <p>Scoin tích lũy</p>
+                        <i class="fa-solid fa-wallet"></i>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>      
+</div>
+
+<script src="./assets/javascript/styles.js"></script>
+</body>
+</html>

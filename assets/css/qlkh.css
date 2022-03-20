@@ -1,0 +1,76 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#main{
+    display: flex;
+    padding: 0 30px;
+}
+#qlkh__header{
+    width: 300px;
+    height: 100%;
+    border: 1px solid black;
+}
+#qlkh__container{
+    width: 100%;
+    height: 1000%;
+}
+#qlkh__c-header{
+    height: 80px;
+    border-bottom: 1px solid black;
+}
+#qlkh__c-header h2{
+    padding: 30px 20px;
+}
+#qlkh__c-manipulation{
+    display: flex;
+    /* border-bottom: 1px solid black; */
+    margin-left: 55px;
+}
+.qlkh__mpt-del , .qlkh__mpt-block{
+    padding: 5px 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 15px 5px 0 5px;
+    height: 30px;
+}
+.qlkh__mpt-search{
+    margin-top: 20px    ;
+    margin-bottom: 10px;
+    margin-left: 440px;
+    width: 300px;
+    display: flex;
+    /* border: 1px solid black; */
+}
+.qlkh__mpt-search button{
+    width: 80px;
+    height: 30px;
+}
+.qlkh__mpt-search input {
+    height: 30px;
+    width: 200px;
+}
+.qlkh__content-table {
+    width: 100%;        
+    border-collapse: collapse;
+    text-align: center;
+}
+.qlkh__content-table th, .qlkh__content-table td {
+    padding: 8px;
+    border: 1px solid #dee2e6;
+}
+.qlkh__content-table th {
+    height: 40px;
+    text-align: left;
+}
+.del-customer:hover, .block-customer:hover{
+    color: red;
+}
+.qlkh__mpt-del:hover{
+    background-color: red;
+}
+.qlkh__mpt-block:hover {
+    background-color: grey;
+    color: white;
+}

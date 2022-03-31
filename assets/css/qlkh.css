@@ -5,7 +5,7 @@
 }
 #main{
     display: flex;
-    padding: 0 30px;
+    /* padding: 0 30px; */
 }
 #qlkh__header{
     width: 300px;
@@ -73,4 +73,29 @@
 .qlkh__mpt-block:hover {
     background-color: grey;
     color: white;
+}
+.qlkh__massage-delct{
+    width: 500px;
+    height: 100px;
+    /* position: absolute; */
+    border: 1px solid black;
+    margin: 12% 35%;
+    background-color:white;
+    text-align: center;
+    padding-top: 10px;
+}
+.message-option{
+    margin-top: 30px;
+}
+.message-option button{
+    width: 240px;
+    height: 30px;
+}
+.overlay__message-del {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.1);
+    top: 0;
+    padding: 10% 0;
 }

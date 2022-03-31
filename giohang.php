@@ -12,6 +12,7 @@
 
 </head>
 <body>
+    
 <div id="main">
     <div id="header">
        
@@ -21,6 +22,7 @@
             <h1>Giỏ hàng</h1>
         </div>
         <div id="GH__container">
+            <form action="" method="post">
             <div class="GH__c-h">
                 <ul class="h-list">
                     <li class="h-item__cb" style="width: 55px; height: 18px; ">
@@ -35,7 +37,45 @@
                     <li class="h-item__tt" style="width: 138px;">Thao tác</li>
                 </ul>
             </div>
+            <?php
+                require_once('sql_connect.php');
+                $sql = "SELECT sanpham.TENSP,sanpham.GIA,giohang.SOLUONG,giohang.MASP FROM sanpham,giohang WHERE sanpham.MASP=giohang.MASP";
+                $query = mysqli_query($conn, $sql);
+                $giohang = array();
+                while($row = mysqli_fetch_array($query,1)){
+                    $giohang[] = $row;
+                }
+                for($i = 0; $i < count($giohang); $i++){
+                    $masp = $giohang[$i]['MASP'];
+                    $sqlha = "SELECT LINK FROM hinhanh WHERE MASP = '$masp'  LIMIT 1";
+                    $hinhanh = mysqli_query($conn, $sqlha);
+                    $link = mysqli_fetch_row($hinhanh);
+            ?>
             <div class="GH__c-p">
+                <div class="GH__c-pcb" style="width: 55px; ">
+                    <label class="pcb-checkbox" type="checkbox" >
+                        <input class="pcb-checkbox_input" type="checkbox" name="check[]" value="<?php echo $giohang[$i]['MASP']?>">
+                    </label>
+                </div>
+                <div class="GH__c-pimg" style="width: 480px; justify-content:left">
+                    <img src="<?php echo $link[0] ?>" alt=""> 
+                    <div class="GH__c-pname"><?php echo $giohang[$i]['TENSP'] ?> </div>
+                </div>
+                <div class="GH__c-pdg" style="width: 173px;"><?php echo $giohang[$i]['GIA'] ?></div>   
+                <div class="GH__c-sl" style="width: 168px">
+                    <input onclick="tru(<?php echo $giohang[$i]['MASP'] ?>)" type='button' value='-' />
+                    <input id='<?php echo $giohang[$i]['MASP'] ?>' min='1' name='quantity' type='text' value='<?php echo $giohang[$i]['SOLUONG'] ?>' style="width: 40px;" />
+                    <input onclick="cong(<?php echo $giohang[$i]['MASP'] ?>)" type='button' value='+' />
+                </div>
+                <div class="GH__c-st" style="width: 130px"><?php echo $giohang[$i]['GIA']*$giohang[$i]['SOLUONG'] ?></div>
+                <div class="GH__c-tt" style="width: 138px">xóa</div>
+                <div class="gh_update"></div>
+            </div>
+            <?php        
+                }
+            ?>
+            </form>
+            <!-- <div class="GH__c-p">
                 <div class="GH__c-pcb" style="width: 55px; ">
                     <label class="pcb-checkbox" type="checkbox" >
                         <input class="pcb-checkbox_input" type="checkbox" name="check[]">
@@ -53,45 +93,7 @@
                 </div>
                 <div class="GH__c-st" style="width: 130px">₫138.000</div>
                 <div class="GH__c-tt" style="width: 138px">xóa</div>
-            </div>
-            <div class="GH__c-p">
-                <div class="GH__c-pcb" style="width: 55px; ">
-                    <label class="pcb-checkbox" type="checkbox" >
-                        <input class="pcb-checkbox_input" type="checkbox" name="check[]">
-                    </label>
-                </div>
-                <div class="GH__c-pimg" style="width: 480px; justify-content:left">
-                    <img src="https://image.cellphones.com.vn/358x/media/catalog/product/8/0/800x800-1-640x640-5_2.png" alt=""> 
-                    <div class="GH__c-pname">Nguyễn Hoàng Gia Đại </div>
-                </div>
-                <div class="GH__c-pdg" style="width: 173px;">138.000đ</div>   
-                <div class="GH__c-sl" style="width: 168px">
-                    <input onclick="tru()" type='button' value='-' />
-                    <input id='quantity' min='1' name='quantity' type='text' value='1' style="width: 40px;" />
-                    <input onclick="cong()" type='button' value='+' />
-                </div>
-                <div class="GH__c-st" style="width: 130px">₫138.000</div>
-                <div class="GH__c-tt" style="width: 138px">xóa</div>
-            </div>
-            <div class="GH__c-p">
-                <div class="GH__c-pcb" style="width: 55px; ">
-                    <label class="pcb-checkbox" type="checkbox" >
-                        <input class="pcb-checkbox_input" type="checkbox" name="check[]"> 
-                    </label>
-                </div>
-                <div class="GH__c-pimg" style="width: 480px; justify-content:left">
-                    <img src="https://image.cellphones.com.vn/358x/media/catalog/product/8/0/800x800-1-640x640-5_2.png" alt=""> 
-                    <div class="GH__c-pname">Nguyễn Hoàng Gia Đại </div>
-                </div>
-                <div class="GH__c-pdg" style="width: 173px;">138.000đ</div>   
-                <div class="GH__c-sl" style="width: 168px">
-                    <input onclick="tru()" type='button' value='-' />
-                    <input id='quantity' min='1' name='quantity' type='text' value='1' style="width: 40px;" />
-                    <input onclick="cong()" type='button' value='+' />
-                </div>
-                <div class="GH__c-st" style="width: 130px">₫138.000</div>
-                <div class="GH__c-tt" style="width: 138px">xóa</div>
-            </div>
+            </div> -->
         </div>
         <div class="GH__thanhtoan">
             <div class="GH__tt-tongtien">
@@ -135,7 +137,7 @@
                     <div class="TT__h-sl" style="margin-left: 80px;">Số lượng</div>
                     <div class="TT__h-tt" style="margin-left: 120px;">Thành tiền</div>
                 </div>
-                <div class="TT__product-c">
+                <!-- <div class="TT__product-c">
                     <div class="TT__product-img" style="width: 80px;">
                         <img src="https://image.cellphones.com.vn/358x/media/catalog/product/i/p/iphone_13-_pro-5_4_1.jpg" alt="">
                     </div>
@@ -151,24 +153,7 @@
                     <div class="TT__product-tp" style="width: 255px; text-align: center;">
                         <p>330000000VND</p>
                     </div>
-                </div>
-                <div class="TT__product-c">
-                    <div class="TT__product-img" style="width: 80px;">
-                        <img src="https://image.cellphones.com.vn/358x/media/catalog/product/i/p/iphone_13-_pro-5_4_1.jpg" alt="">
-                    </div>
-                    <div class="TT__product-name" style="width: 580px; padding-left: 20px;">
-                        <p>iphone_13-_pro-5_4_1</p>
-                    </div>
-                    <div class="TT__product-price" style="width: 160px; text-align: center;" >
-                        <p>3300000VND</p>
-                    </div>
-                    <div class="TT__product-amount" style="width: 125px; text-align: center;">
-                        <p>1</p>
-                    </div>
-                    <div class="TT__product-tp" style="width: 255px; text-align: center;">
-                        <p>330000000VND</p>
-                    </div>
-                </div>
+                </div>-->
                 <div class="TT__product-c">
                     <div class="TT__product-img">
 
